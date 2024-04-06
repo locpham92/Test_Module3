@@ -4,17 +4,17 @@ public class Staff {
     int id;
     private String name;
     private String email;
-    private String adress;
+    private String address;
     private String phoneNumber;
     private Double salary;
     private Department department;
     public Staff() {}
 
-    public Staff(int id, String name, String email, String adress, String phoneNumber, Double salary, Department department) {
+    public Staff(int id, String name, String email, String address, String phoneNumber, Double salary, Department department) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.adress = adress;
+        this.address = address;
         this.phoneNumber = phoneNumber;
         this.salary = salary;
         this.department = department;
@@ -44,12 +44,12 @@ public class Staff {
         this.email = email;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getPhoneNumber() {

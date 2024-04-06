@@ -11,10 +11,11 @@
     <title><DELETE</title>
 </head>
 <body>
-<a href="http://localhost:8080/products?action=home">HOME</a>
-<h1>Do you want to delete staff information with id: </h1>
-Product Id: <input type="number" name="id" placeholder="ID" value="${idDelete}" readonly>
-<button><a href="http://localhost:8080/products?action=delete">Yes</a></button>
-<button><a href="http://localhost:8080/products?action=home">No</a></button>
+<a href="http://localhost:8080/staff?action=home">HOME</a>
+<h2>Do you want to remove staff with ID: ${idDelete} </h2>
+<form method="post" action="http://localhost:8080/staff?action=delete">
+    <button type="submit">Yes</button>
+</form>
+<button><a href="http://localhost:8080/staff?action=home">No</a></button>
 </body>
 </html>

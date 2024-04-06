@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
 
-@WebServlet(name = "userController", value = "/staff")
+@WebServlet(name = "StaffController", value = "/staff")
 
 public class StaffController extends HttpServlet {
     private StaffService staffService = new StaffService();
@@ -55,14 +55,17 @@ public class StaffController extends HttpServlet {
         dispatcher.forward(req, resp);
     }
 
-    public void showAddPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void showAddPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher dispatcher = req.getRequestDispatcher("staff/add.jsp");
         dispatcher.forward(req, resp);
     }
 
-    public void showHomePage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void showHomePage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Staff> staffList = staffService.findAll();
         req.setAttribute("staffList", staffList);
+        for (Staff staff : staffList) {
+            System.out.println(staff.getName());
+        }
         RequestDispatcher dispatcher = req.getRequestDispatcher("staff/home.jsp");
         dispatcher.forward(req, resp);
     }
@@ -95,11 +98,11 @@ public class StaffController extends HttpServlet {
         String address = req.getParameter("address");
         String phoneNumber = req.getParameter("phoneNumber");
         Double salary = Double.parseDouble(req.getParameter("salary"));
-        String department = req.getParameter("department");
+        String departmentName = req.getParameter("department");
         List<Department> departmentList = departmentService.findAll();
-        for (int i = 0; i <departmentList.size(); i++) {
-            if (departmentList.get(i).getName().equals(department)) {
-                Staff newStaff = new Staff(id, name, email, address,phoneNumber,salary, departmentList.get(i));
+        for (Department dp : departmentList) {
+            if (dp.getName().equals(departmentName)) {
+                Staff newStaff = new Staff(id, name, email, address,phoneNumber,salary, dp);
                 staffService.edit(id, newStaff);
                 resp.sendRedirect("/staff?action=home");
             }

@@ -22,7 +22,7 @@ public class StaffService implements IStaffService<Staff> {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, staff.getName());
             preparedStatement.setString(2, staff.getEmail());
-            preparedStatement.setString(2, staff.getAdress());
+            preparedStatement.setString(2, staff.getAddress());
             preparedStatement.setString(3, staff.getPhoneNumber());
             preparedStatement.setDouble(4, staff.getSalary());
             Department department = staff.getDepartment();
@@ -60,18 +60,18 @@ public class StaffService implements IStaffService<Staff> {
     }
 
     @Override
-    public void edit(int id, Staff staff) {
+    public void edit(int id,Staff staff) {
         String sql = "UPDATE staff SET name = ?, email = ?, address = ?, phonenumber = ?, salary = ?, idDepartment = ? WHERE id = ?;";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, staff.getName());
             preparedStatement.setString(2, staff.getEmail());
-            preparedStatement.setString(2, staff.getAdress());
-            preparedStatement.setString(3, staff.getPhoneNumber());
-            preparedStatement.setDouble(4, staff.getSalary());
+            preparedStatement.setString(3, staff.getAddress());
+            preparedStatement.setString(4, staff.getPhoneNumber());
+            preparedStatement.setDouble(5, staff.getSalary());
             Department department = staff.getDepartment();
-            preparedStatement.setInt(5, department.getId());
-            preparedStatement.setInt(6, id);
+            preparedStatement.setInt(6, department.getId());
+            preparedStatement.setInt(7, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

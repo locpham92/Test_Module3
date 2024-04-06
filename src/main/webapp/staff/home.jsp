@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: User
@@ -9,13 +10,13 @@
 <html>
 <head>
     <title>Home</title>
-    <link rel="stylesheet" href="<c:url value='staff/home.css'/>">
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
 <a href="http://localhost:8080/staff?action=add">Add</a>
 <div class="search">
     <div class="searchbox">
-
+        <input type="text" name="search" placeholder="Search...">
     </div>
     <button type="button" class="btn">Search</button>
 </div>
@@ -36,9 +37,9 @@
         <td>${item.name}</td>
         <td>${item.email}</td>
         <td>${item.address}</td>
-        <td>${item.phonenumber}</td>
+        <td>${item.phoneNumber}</td>
         <td>${item.salary}</td>
-        <td>${item.department}</td>
+        <td>${item.department.name}</td>
         <td><button class="btn"><a href="http://localhost:8080/staff?action=edit&idEdit=${item.id}">Edit</a></button></td>
         <td><button class="btn"><a href="http://localhost:8080/staff?action=delete&idDelete=${item.id}">Delete</a></button></td>
     </tr>

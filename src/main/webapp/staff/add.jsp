@@ -13,7 +13,7 @@
 <body>
 <a href="http://localhost:8080/staff?action=home">Add</a>
 <h1>Add new employee</h1>
-<form method="post" action="http://localhost:8080/products?action=add">
+<form method="post" action="http://localhost:8080/staff?action=add">
     Name
     <input type="text" name="name" placeholder="Enter name">
     Email
