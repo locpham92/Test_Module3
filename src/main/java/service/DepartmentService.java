@@ -69,7 +69,7 @@ public class DepartmentService implements IDepartmentService<Department> {
     }
 
     public Department findById(int id) {
-        String sql = "select * from department where id=?;";
+        String sql = "select * from department where id = ?;";
         Department department = null;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -77,6 +77,22 @@ public class DepartmentService implements IDepartmentService<Department> {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 String name = rs.getString("name");
+                department = new Department(id, name);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return department;
+    }
+    public Department findByName(String name) {
+        String sql = "select * from department where name=?;";
+        Department department = null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, name);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
                 department = new Department(id, name);
             }
         } catch (SQLException e) {

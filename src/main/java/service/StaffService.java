@@ -22,11 +22,11 @@ public class StaffService implements IStaffService<Staff> {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, staff.getName());
             preparedStatement.setString(2, staff.getEmail());
-            preparedStatement.setString(2, staff.getAddress());
-            preparedStatement.setString(3, staff.getPhoneNumber());
-            preparedStatement.setDouble(4, staff.getSalary());
+            preparedStatement.setString(3, staff.getAddress());
+            preparedStatement.setString(4, staff.getPhoneNumber());
+            preparedStatement.setDouble(5, staff.getSalary());
             Department department = staff.getDepartment();
-            preparedStatement.setInt(5, department.getId());
+            preparedStatement.setInt(6, department.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -111,6 +111,31 @@ public class StaffService implements IStaffService<Staff> {
             e.printStackTrace();
         }
         return staff;
+    }
+    public List<Staff> findStaffByName(String findName) {
+        String sql = "select staff.*, d.name as nameDepartment from staff join department d on d.id = staff.idDepartment where staff.name like ?;";
+        List<Staff> foundStaffList = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, "%" + findName + "%");
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String fullName = rs.getString("name");
+                String email = rs.getString("email");
+                String address = rs.getString("address");
+                String phoneNumber = rs.getString("phoneNumber");
+                Double salary = rs.getDouble("salary");
+                int idDepartment = rs.getInt("idDepartment");
+                String nameDepartment = rs.getString("nameDepartment");
+                Department department = new Department(idDepartment, nameDepartment);
+                Staff foundStaff = new Staff(id, fullName, email, address, phoneNumber, salary, department);
+                foundStaffList.add(foundStaff);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return foundStaffList;
     }
 
 }

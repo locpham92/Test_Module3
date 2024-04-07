@@ -20,6 +20,15 @@ public class Staff {
         this.department = department;
     }
 
+    public Staff(String name, String email, String address, String phoneNumber, Double salary, Department department) {
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.salary = salary;
+        this.department = department;
+    }
+
     public int getId() {
         return id;
     }

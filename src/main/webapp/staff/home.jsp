@@ -10,40 +10,41 @@
 <html>
 <head>
     <title>Home</title>
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="staff/home.css">
 </head>
 <body>
-<a href="http://localhost:8080/staff?action=add">Add</a>
-<div class="search">
-    <div class="searchbox">
-        <input type="text" name="search" placeholder="Search...">
-    </div>
-    <button type="button" class="btn">Search</button>
+<div class="header">
+    <a class="btn" href="http://localhost:8080/staff?action=add">Add</a>
+    <form method="post" action="http://localhost:8080/staff?action=search" style="float: right;">
+        <input type="text" name="keyword" placeholder="Search">
+        <button type="submit" class="btn">Search</button>
+    </form>
 </div>
-<table border="1">
-    <tr>
-        <td>#</td>
-        <td>Name</td>
-        <td>Email</td>
-        <td>Adress</td>
-        <td>PhoneNumber</td>
-        <td>Salary</td>
-        <td>Department</td>
-        <td colspan="2">Action</td>
-    </tr>
-    <c:forEach var="item" items="${staffList}">
-    <tr>
-        <td>${item.id}</td>
-        <td>${item.name}</td>
-        <td>${item.email}</td>
-        <td>${item.address}</td>
-        <td>${item.phoneNumber}</td>
-        <td>${item.salary}</td>
-        <td>${item.department.name}</td>
-        <td><button class="btn"><a href="http://localhost:8080/staff?action=edit&idEdit=${item.id}">Edit</a></button></td>
-        <td><button class="btn"><a href="http://localhost:8080/staff?action=delete&idDelete=${item.id}">Delete</a></button></td>
-    </tr>
-    </c:forEach>
+</br>
+    <table>
+        <tr>
+            <td>#</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Adress</td>
+            <td>PhoneNumber</td>
+            <td>Salary</td>
+            <td>Department</td>
+            <td colspan="2">Action</td>
+        </tr>
+        <c:forEach var="item" items="${staffList}">
+        <tr>
+            <td>${item.id}</td>
+            <td>${item.name}</td>
+            <td>${item.email}</td>
+            <td>${item.address}</td>
+            <td>${item.phoneNumber}</td>
+            <td>${item.salary}</td>
+            <td>${item.department.name}</td>
+            <td><a class="edit" href="http://localhost:8080/staff?action=edit&idEdit=${item.id}">Edit</a></td>
+            <td><a class="delete" href="http://localhost:8080/staff?action=delete&idDelete=${item.id}">Delete</a></td>
+        </tr>
+        </c:forEach>
 </table>
 </body>
 </html>

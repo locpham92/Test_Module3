@@ -1,19 +1,60 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
 .edit {
-    width: 20px;
-    height: 10px;
-    border-radius:5px;
-    background-color: yellow;
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: #FFC105;
+    color: black;
+    text-decoration: none;
+    border-radius: 3px;
+    border: none;
+    text-align: center;
+    cursor: pointer;
 }
 .delete {
-    width: 20px;
-    height: 10px;
-    border-radius:5px;
-    background-color: red;
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: #E03541;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+}
+button {
+    text-decoration: none;
 }
 .btn {
-    width: 20px;
-    height: 10px;
-    border-radius:5px;
-    background-color: green;
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: #0D6EFD;
     color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+}
+tr:nth-child(odd) {
+    background-color: #e6e6e6;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+}
+table {
+    border-collapse: collapse;
+}
+td {
+    padding: 5px;
+}
+.header {
+    margin-bottom: 20px;
 }

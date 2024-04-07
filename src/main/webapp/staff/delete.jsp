@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: User
@@ -9,13 +10,15 @@
 <html>
 <head>
     <title><DELETE</title>
+    <link rel="stylesheet" href="staff/home.css">
 </head>
 <body>
 <a href="http://localhost:8080/staff?action=home">HOME</a>
-<h2>Do you want to remove staff with ID: ${idDelete} </h2>
+<h2>Do you want to remove staff with ID:</h2>
 <form method="post" action="http://localhost:8080/staff?action=delete">
-    <button type="submit">Yes</button>
+    ID: <input type="number" name="id" value="${idDelete}" readonly>
+    <button type="submit" class="btn">Yes</button>
+    <a class="btn" href="http://localhost:8080/staff?action=home">No</a>
 </form>
-<button><a href="http://localhost:8080/staff?action=home">No</a></button>
 </body>
 </html>

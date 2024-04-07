@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: User
@@ -9,28 +10,29 @@
 <html>
 <head>
     <title>ADD</title>
+    <link rel="stylesheet" href="staff/home.css">
 </head>
 <body>
-<a href="http://localhost:8080/staff?action=home">Add</a>
+<a href="http://localhost:8080/staff?action=home">HOME</a>
 <h1>Add new employee</h1>
 <form method="post" action="http://localhost:8080/staff?action=add">
-    Name
+    <h3>Name</h3>
     <input type="text" name="name" placeholder="Enter name">
-    Email
+    <h3>Email</h3>
     <input type="text" name="email" placeholder="Enter email">
-    Phone Number
+    <h3>Address</h3>
+    <input type="text" name="address" placeholder="Enter address">
+    <h3>Phone Number</h3>
     <input type="text" name="phonenumber" placeholder="Enter phone number">
-    Salary
+    <h3>Salary</h3>
     <input type="text" name="salary" placeholder="Enter salary">
-    Department
-    <select name="department" placeholder="Open this select menu">
-        <option value="RnD"></option>
-        <option value="Sale"></option>
-        <option value="Technical"></option>
-        <option value="HR"></option>
-    </select>
-    <button type="submit">Submit</button>
-</form>
+    <h3>Department</h3>
+    <select name="department">
+        <c:forEach var="item" items="${departments}">
+        <option value="${item.id}">${item.name}</option>
+        </c:forEach>
+    </select><br>
+    <button type="submit" class="btn">Submit</button>
 </form>
 </body>
 </html>
