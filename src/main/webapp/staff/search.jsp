@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="staff/home.css">
 </head>
 <body>
-<h3>SEARCHING RESULT:</h3>
+<a href="http://localhost:8080/staff?action=home">HOME</a>
+<h3>SEARCHING RESULT: ${keyword}</h3>
 <table>
     <tr style="font-weight: bold">
         <td>#</td>

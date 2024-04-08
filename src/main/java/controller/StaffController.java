@@ -94,6 +94,7 @@ public class StaffController extends HttpServlet {
     private void searchStaff(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String keyword = req.getParameter("keyword");
         List<Staff> foundStaffList = staffService.findStaffByName(keyword);
+        req.setAttribute("keyword", keyword);
         req.setAttribute("foundStaffList", foundStaffList);
         RequestDispatcher dispatcher = req.getRequestDispatcher("staff/search.jsp");
         dispatcher.forward(req, resp);
