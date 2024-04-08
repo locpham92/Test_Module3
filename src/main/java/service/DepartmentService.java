@@ -29,6 +29,7 @@ public class DepartmentService implements IDepartmentService<Department> {
     @Override
     public List<Department> findAll() {
         String sql = "select * from department;";
+        List<Department> departments = new ArrayList<>();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
@@ -36,12 +37,12 @@ public class DepartmentService implements IDepartmentService<Department> {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 Department department = new Department(id, name);
-                departmentList.add(department);
+                departments.add(department);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return departmentList;
+        return departments;
     }
 
     @Override

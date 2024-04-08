@@ -35,7 +35,7 @@ public class StaffService implements IStaffService<Staff> {
 
     @Override
     public List<Staff> findAll() {
-        List<Staff> staffList = new ArrayList<>();
+        List<Staff> staffs = new ArrayList<>();
         String sql = "select staff.*, d.name as nameDepartment from staff join department d on d.id = staff.idDepartment;";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -51,12 +51,12 @@ public class StaffService implements IStaffService<Staff> {
                 String nameDepartment = rs.getString("nameDepartment");
                 Department department = new Department(idDepartment, nameDepartment);
                 Staff staff = new Staff(id, name, email, address, phoneNumber, salary, department);
-                staffList.add(staff);
+                staffs.add(staff);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return staffList;
+        return staffs;
     }
 
     @Override

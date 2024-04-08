@@ -14,11 +14,11 @@
 </head>
 <body>
 <a href="http://localhost:8080/staff?action=home">HOME</a>
-<h2>Do you want to remove staff with ID:</h2>
+<h2>Do you want to remove staff with ID: ${idDelete} </h2>
 <form method="post" action="http://localhost:8080/staff?action=delete">
-    ID: <input type="number" name="id" value="${idDelete}" readonly>
-    <button type="submit" class="btn">Yes</button>
-    <a class="btn" href="http://localhost:8080/staff?action=home">No</a>
+    <input type="hidden" name="id" value="${idDelete}" readonly>
+    <button type="submit" class="delete">Yes</button>
+    <a class="edit" href="http://localhost:8080/staff?action=home">No</a>
 </form>
 </body>
 </html>
