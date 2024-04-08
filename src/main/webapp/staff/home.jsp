@@ -22,12 +22,12 @@
 </div>
 </br>
     <table>
-        <tr>
+        <tr style="font-weight: bold">
             <td>#</td>
             <td>Name</td>
             <td>Email</td>
             <td>Adress</td>
-            <td>PhoneNumber</td>
+            <td>Phone Number</td>
             <td>Salary</td>
             <td>Department</td>
             <td colspan="2">Action</td>
